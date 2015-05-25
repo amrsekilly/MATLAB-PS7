@@ -11,17 +11,23 @@
 % any information
 function classofa = integerize (A)
     % get the largest element of A
-    maxnum = max(max (A, [], 2))
+    maxnum = max(max (A, [], 2));
     % determine the smallest class for A
-    % (-2.^7) to ((2.^(7))-1) int8
-    % (-2.^15) to (( 2.^(15))-1) int16
-    % (-2.^31) to ((2.^31)-1) int32
-    % (-2.^63) to ((2.^63)-1) int64
-    % (0) to ((2.^8)-1) uint8
+    if (maxnum >= 0 & maxnum <=  ((2.^8)-1))
+        classofa = 'uint8';
     % (0) to ((2.^16)-1) uint16
+    elseif (maxnum >= 0 & maxnum <=  ((2.^16)-1))
+        classofa = 'uint16';
     % (0) to ((2.^32)-1) uint32
+    elseif (maxnum >= 0 & maxnum <=  ((2.^32)-1))
+        classofa = 'uint32';
     % (0) to ((2.^64)-1) uint64
-    % 'None' otherwise 
+    elseif (maxnum >= 0 & maxnum <=  ((2.^64)-1))
+        classofa = 'uint64';
+    % 'NONE' otherwise 
+    else
+        classofa = 'NONE';
+    end
 end
 
 
