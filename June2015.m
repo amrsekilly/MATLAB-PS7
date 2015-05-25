@@ -1,5 +1,5 @@
 % Introduction to Programming with MATLAB - MOOC
-% Homework 7 - Problem 2
+% Homework 7 - Problem 3
 
 % inputs:
 % outputs: daysofjune : eturns a cell array of dimensions 30-by-3
