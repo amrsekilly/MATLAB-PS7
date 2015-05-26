@@ -10,23 +10,33 @@ function num = dial (strnum)
     texttonums = double(strnum);
     for i = 1 : length(texttonums)
         % check for uppercase alphabet
-        if (texttonums(i) >= 65 & texttonums(i) <= 90)
-            num = strcat(num2str(num), num2str(chartonum (texttonums(i))));
+        % check for illigal chars
+        if (texttonums(i) == 81 || texttonums(i) == 90 || (texttonums(i) >= 97 & texttonums(i) <= 122))
+            num = [];
+            break
+        elseif (texttonums(i) >= 65 & texttonums(i) <= 90)
+            % num = strcat(num2str(num), num2str(chartonum (texttonums(i))));
+            num = [num2str(num), num2str(chartonum (texttonums(i)))];
             % check for special characters
             % it does not change the digits, the # and * signs, or the spaces
             % it replaces each ( or ) with a space and each - with a space
             % # is 35 , * is 42 , space is 32
         elseif (texttonums(i) == 35 || texttonums(i) == 42)
             % echo back the same char to the num array
-            num = strcat(num2str(num), char(texttonums(i)));
+            % num = strcat(num2str(num), char(texttonums(i)));
+            num = [num2str(num), char(texttonums(i))];
             % - is 45 , ( is 40 , ) is 41
         elseif (texttonums(i) == 45 || texttonums(i) == 40 || texttonums(i) == 41 || texttonums(i) == 32)
             % return space 
-            num = [num, 32];
+            num = [num, ' '];
         % 48 to 57 all numbers from 0 to 9 - echo them back 
         elseif (texttonums(i) >= 48 & texttonums(i) <= 57)
             % echo back same num
-            num = strcat(num2str(num), (char(texttonums(i))));
+            % num = strcat(num2str(num), (char(texttonums(i))));
+            num = [num2str(num), char(texttonums(i))];
+        else
+            num = [];
+            break;
         end
     end
 end
@@ -52,7 +62,7 @@ function num = chartonum (charnum)
     elseif (charnum == 'W' || charnum == 'X' || charnum == 'Y')
         num = 9;
     else
-        num = [];
+        num = ' ';
     end
 end
     
