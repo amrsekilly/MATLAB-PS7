@@ -4,7 +4,14 @@
 % Input: strnum :  '1 (FUN) DOG-4-YOU #2' 
 % Output: num  :  '1 386 364 4 968 #2'
 function num = dial (strnum)
-    num = chartonum (strnum);
+    num = [];
+    texttonums = double(strnum);
+    for i = 1 : length(texttonums)
+        % check for uppercase alphabet
+        if (texttonums(i) >= 65 & texttonums(i) <= 90)
+            num(end+1) = chartonum (texttonums(i));
+        end
+    end
 end
 
 %% It decrypts the characters to the numbers on the keypad
