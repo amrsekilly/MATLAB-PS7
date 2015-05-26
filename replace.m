@@ -9,7 +9,8 @@
 
 function strout = replace (strin, c1, c2)
     indexes = findchar (strin, c1);
-    strout = indexes;
+    chars = char(strin);
+    strout = cellstr(replacechars (chars, indexes, c2));
 end
 
 % returns the indexes of the instances of c1 in the sting
@@ -22,3 +23,13 @@ function indexes = findchar (strin, c1)
         end
     end
 end
+
+
+
+function newcell = replacechars (chars, indexes, c2)
+    for i = indexes
+        newcell = chars;
+        newcell(indexes) = c2;
+    end
+end
+
