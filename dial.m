@@ -11,8 +11,7 @@ function num = dial (strnum)
     for i = 1 : length(texttonums)
         % check for uppercase alphabet
         if (texttonums(i) >= 65 & texttonums(i) <= 90)
-            num(end+1) = chartonum (texttonums(i));
-            
+            num = strcat(num2str(num), num2str(chartonum (texttonums(i))));
             % check for special characters
             % it does not change the digits, the # and * signs, or the spaces
             % it replaces each parenthesis with a space and each dash with a space
