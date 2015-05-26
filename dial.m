@@ -22,7 +22,7 @@ function num = dial (strnum)
             % - is 45 , ( is 40 , ) is 41
         elseif (texttonums(i) == 45 || texttonums(i) == 40 || texttonums(i) == 41 || texttonums(i) == 32)
             % return space 
-            num = [num, 3];
+            num = strcat(num2str(num, '%2d'), ' ');
         % 48 to 57 all numbers from 0 to 9 - echo them back 
         elseif (texttonums(i) >= 48 & texttonums(i) <= 57)
             % echo back same num
