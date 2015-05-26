@@ -21,13 +21,13 @@ function coded = codeit (txt)
             % print output
             upperalpha = repmat(cellstr(['A'; 'B'; 'C'; 'D'; 'E'; 'F'; 'G'; 'H'; 'I'; 'J'; 'K'; 'L'; 'M'; 'N'; 'O'; 'P'; 'Q'; 'R'; 'S'; 'T'; 'U'; 'V'; 'W'; 'X'; 'Y'; 'Z']), 5, 1);
             index = txtNum(i)-64;
-            coded(end+1) = double(char(upperalpha(i+25)));
+            coded(end+1) = double(char(upperalpha(index+25)));
             index = 0;
         elseif (txtNum(i) >= 97 & txtNum(i) <= 122)
             %fprintf('lower case\n');
             loweralpha = repmat(cellstr(['a'; 'b'; 'c'; 'd'; 'e'; 'f'; 'g'; 'h'; 'i'; 'j'; 'k'; 'l'; 'm'; 'n'; 'o'; 'p'; 'q'; 'r'; 's'; 't'; 'u'; 'v'; 'w'; 'x'; 'y'; 'z']), 5, 1);
             index = txtNum(i)-96;
-            coded(end+1) = double(char(loweralpha(i+25)));
+            coded(end+1) = double(char(loweralpha(index+25)));
             index = 0;
         end
     end
