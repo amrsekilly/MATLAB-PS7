@@ -14,11 +14,19 @@ function num = dial (strnum)
             num = strcat(num2str(num), num2str(chartonum (texttonums(i))));
             % check for special characters
             % it does not change the digits, the # and * signs, or the spaces
-            % it replaces each parenthesis with a space and each dash with a space
+            % it replaces each ( or ) with a space and each - with a space
             % # is 35 , * is 42 , space is 32
-        elseif (texttonums(i) == 35 || texttonums(i) == 42 || texttonums(i) == 32)
+        elseif (texttonums(i) == 35 || texttonums(i) == 42)
             % echo back the same char to the num array
             num = strcat(num2str(num), char(texttonums(i)));
+            % - is 45 , ( is 40 , ) is 41
+        elseif (texttonums(i) == 45 || texttonums(i) == 40 || texttonums(i) == 41 || texttonums(i) == 32)
+            % return space 
+            num = [num, 3];
+        % 48 to 57 all numbers from 0 to 9 - echo them back 
+        elseif (texttonums(i) >= 48 & texttonums(i) <= 57)
+            % echo back same num
+            num = strcat(num2str(num), (char(texttonums(i))));
         end
     end
 end
