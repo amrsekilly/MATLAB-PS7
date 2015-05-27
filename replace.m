@@ -8,7 +8,7 @@
 % strout: cell vector with c1 instances relaced by c2 values
 
 function strout = replace (strin, c1, c2)
-    indexes = findchar (strin, c1);
+    indexes = findchar (strin, c1)
     chars = char(strin);
     strout = cellstr(replacechars (chars, indexes, c2));
 end
@@ -17,9 +17,12 @@ end
 function indexes = findchar (strin, c1)
     indexes = [];
     chars = char(strin);
-    for i = 1 : length(chars)
-        if (chars(i) == c1)
-            indexes(end+1) = i;
+    for i = 1 : length(strin)
+        for j = 1 : length(strin{i})
+            nstrin = strin{i};
+            if (nstrin(j) == c1)
+                indexes(end+1) = i;
+            end
         end
     end
 end
