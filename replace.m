@@ -8,31 +8,24 @@
 % strout: cell vector with c1 instances relaced by c2 values
 
 function strout = replace (strin, c1, c2)
-    indexes = findchar (strin, c1)
-    chars = char(strin);
-    strout = cellstr(replacechars (chars, indexes, c2));
-end
-
-% returns the indexes of the instances of c1 in the sting
-function indexes = findchar (strin, c1)
-    indexes = [];
-    chars = char(strin);
+    strout = strin;
     for i = 1 : length(strin)
-        for j = 1 : length(strin{i})
-            nstrin = strin{i};
-            if (nstrin(j) == c1)
-                indexes(end+1) = i;
-            end
-        end
+       elindex =  findchar (strin{i}, c1);
+       for j = 1 : length(elindex)
+           strout{i}(elindex) = c2;
+       end
     end
 end
 
-
-
-function newcell = replacechars (chars, indexes, c2)
-    for i = indexes
-        newcell = chars;
-        newcell(indexes) = c2;
+% returns the indexes of the instances of c1 in the sting
+% findchar works on only one cell element at a time
+% strin shoud be just one cell element
+function indexes = findchar (strin, c1)
+    indexes = [];
+    for i = 1 : length(strin)
+        if (strin(i) == c1)
+            indexes(end+1) = i;
+        end
     end
 end
 
