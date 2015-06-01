@@ -18,7 +18,15 @@ function arabic = roman (sroman)
     % get count of I
     % get count of V
     % get count of X
-    % I is on left
-    % If ((count (V) | count(X)) & count (I) & (index(I) < index (X) | index(I) < index (V)))
-    % arabic = 
+    % arabic = 0;
+    % count(V) > 0
+    % arabic = arabic + 5 * count(V);
+    % count of (X) > 0
+    % arabic = arabic + 10 * count(X);
+    % (index (I) < index (V)) | (index (I) < index (X))
+    % arabic = arabic - 1 * count (I);
+    % (index (I) > index (V)) | (index (I) > index (X))
+    % arabic = arabic + 1 * count (I);
+    % else 
+    % arabic = 0;
 end
