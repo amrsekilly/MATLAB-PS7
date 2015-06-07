@@ -14,11 +14,11 @@ function cleanstring = censor (strin, badword)
         % remove the badword 
         splitst(badIndex) = [];
         % push the line to cleanstring
-        cleanstring(i, 1) = cellstr(strjoin(splitst));
+        cleanstring(i) = cellstr(strjoin(splitst));
         % reset badIndex
         badIndex = 0;
    end
-   cleanstring = cleanstring';
+   cleanstring = cellstr((char(cleanstring)));
 end
 
 
