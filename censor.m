@@ -5,18 +5,16 @@
 % badword: a string word to remove from the strin
 % output: cleanstring: a cell string withou the badword
 function cleanstring = censor (strin, badword)
-    % input cell to string
-    % strfind(cstr, 'wood')
-  %  tmps = char(strin);
-   % splited_tmp = strsplit(tmps);
-   % cleanstring = splited_tmp;
-   % cleanstring(strcmp(cellstr(splited_tmp), badword)) = [];
    st = char(strin);
+   cleanstring = strin;
    for i = 1 : size(st, 1) % i represents each line
        % split all the words in each line 
-        badIndex = strcmp(strsplit(st(i, :)), badword);
+        splitst = strsplit(st(i, :));
+        badIndex = strcmp(splitst, badword);
         % remove the badword 
+        splitst(badIndex) = [];
         % push the line to cleanstring
+        cleanstring(i, 1) = cellstr(strjoin(splitst));
         % reset badIndex
         badIndex = 0;
    end
