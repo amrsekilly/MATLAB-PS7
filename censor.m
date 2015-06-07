@@ -7,18 +7,23 @@
 function cleanstring = censor (strin, badword)
    st = char(strin);
    cleanstring = {};
+   j = 1;
    for i = 1 : size(st, 1) % i represents each line
+   
        % split all the words in each line 
         splitst = strsplit(st(i, :));
         badIndex = strcmp(splitst, badword);
         % remove the badword 
-        splitst(badIndex) = [];
-        % push the line to cleanstring
-        cleanstring(i) = cellstr(strjoin(splitst));
+%         splitst(badIndex) = [];
+        if(~(sum(badIndex) > 0))
+            cleanstring(j) = cellstr(strjoin(splitst));
+            j = j + 1;
+        % push the line to cleanstri 
+        end
         % reset badIndex
         badIndex = 0;
    end
-   cleanstring = cellstr((char(cleanstring)));
+
 end
 
 
