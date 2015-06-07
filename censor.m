@@ -12,11 +12,13 @@ function cleanstring = censor (strin, badword)
    % cleanstring = splited_tmp;
    % cleanstring(strcmp(cellstr(splited_tmp), badword)) = [];
    st = char(strin);
-   cleanstring = st;
-   for i = 1 : size(st, 1)
-        if (strcmp(strsplit(cleanstring(i, :)), badword))
-            strsplit(cleanstring(i, :)) = [];
-        end
+   for i = 1 : size(st, 1) % i represents each line
+       % split all the words in each line 
+        badIndex = strcmp(strsplit(st(i, :)), badword);
+        % remove the badword 
+        % push the line to cleanstring
+        % reset badIndex
+        badIndex = 0;
    end
 end
 
