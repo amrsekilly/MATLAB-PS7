@@ -6,7 +6,7 @@
 % output: cleanstring: a cell string withou the badword
 function cleanstring = censor (strin, badword)
    st = char(strin);
-   cleanstring = strin;
+   cleanstring = {};
    for i = 1 : size(st, 1) % i represents each line
        % split all the words in each line 
         splitst = strsplit(st(i, :));
@@ -18,6 +18,7 @@ function cleanstring = censor (strin, badword)
         % reset badIndex
         badIndex = 0;
    end
+   cleanstring = cleanstring';
 end
 
 
